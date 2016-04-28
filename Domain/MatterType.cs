@@ -22,5 +22,6 @@ namespace GraphQL.Tests
 
             IsTypeOf = value => value is Matter;
         }
+        
     }
 }

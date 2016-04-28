@@ -9,6 +9,7 @@ namespace GraphQL.Tests
         private readonly List<Human> _humans = new List<Human>();
         private readonly List<Matter> _matters = new List<Matter>();
         private readonly List<Droid> _droids = new List<Droid>();
+        private readonly List<Client>_clients = new List<Client>();
 
         public StarWarsData()
         {
@@ -53,6 +54,13 @@ namespace GraphQL.Tests
                 Reference = "A0001-0001",
                 Description = "A new matter"
             });
+
+            _clients.Add(new Client()
+            {
+                Reference = "A0001",
+                Forename = "John"
+            });
+
         }
 
         public IEnumerable<StarWarsCharacter> GetFriends(StarWarsCharacter character)
@@ -87,11 +95,9 @@ namespace GraphQL.Tests
             return Task.FromResult(_matters.FirstOrDefault(h => h.Reference == reference));
         }
 
-    }
-
-    public class Matter
-    {
-        public string Reference { get; set; }
-        public string Description { get; set; }
+        public Task<Client> GetClientByReferenceAsync(string reference)
+        {
+            return Task.FromResult(_clients.FirstOrDefault(h => h.Reference == reference));
+        }
     }
 }
