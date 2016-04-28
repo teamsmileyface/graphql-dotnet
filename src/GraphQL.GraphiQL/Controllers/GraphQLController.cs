@@ -20,6 +20,7 @@ namespace GraphQL.GraphiQL.Controllers
             _container.Register<StarWarsQuery>();
             _container.Register<HumanType>();
             _container.Register<DroidType>();
+            _container.Register<MatterType>();
             _container.Register<CharacterInterface>();
             _container.Singleton(() => new StarWarsSchema(type => (GraphType) _container.Get(type)));
 

@@ -7,6 +7,7 @@ namespace GraphQL.Tests
     public class StarWarsData
     {
         private readonly List<Human> _humans = new List<Human>();
+        private readonly List<Matter> _matters = new List<Matter>();
         private readonly List<Droid> _droids = new List<Droid>();
 
         public StarWarsData()
@@ -38,6 +39,20 @@ namespace GraphQL.Tests
                 AppearsIn = new[] {4, 5, 6},
                 PrimaryFunction = "Protocol"
             });
+
+            _humans.Add(new Human
+            {
+                Id = "Lando",
+                Name = "Lando",
+                AppearsIn = new[] { 5, 6 },
+                HomePlanet = "Socorro"                
+            });
+
+            _matters.Add(new Matter()
+            {
+                Reference = "A0001-0001",
+                Description = "A new matter"
+            });
         }
 
         public IEnumerable<StarWarsCharacter> GetFriends(StarWarsCharacter character)
@@ -66,5 +81,17 @@ namespace GraphQL.Tests
         {
             return Task.FromResult(_droids.FirstOrDefault(h => h.Id == id));
         }
+
+        public Task<Matter> GetMatterByReferenceAsync(string reference)
+        {
+            return Task.FromResult(_matters.FirstOrDefault(h => h.Reference == reference));
+        }
+
+    }
+
+    public class Matter
+    {
+        public string Reference { get; set; }
+        public string Description { get; set; }
     }
 }

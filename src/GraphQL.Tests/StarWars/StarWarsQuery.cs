@@ -27,6 +27,17 @@ namespace GraphQL.Tests
                     }),
                 resolve: context => data.GetDroidByIdAsync((string)context.Arguments["id"])
             );
+
+            Field<MatterType>(
+                "matter",
+                arguments: new QueryArguments(
+                    new[]
+                    {
+                        new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "reference", Description = "reference of the droid" }
+                    }),
+                resolve: context => data.GetMatterByReferenceAsync((string)context.Arguments["reference"])
+            );
+            
         }
     }
 }
