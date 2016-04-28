@@ -34,6 +34,10 @@
       <HintPath>..\..\packages\Fixie.1.0.0.33\lib\net45\Fixie.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="GraphQL, Version=0.6.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\GraphQL.0.6.5.0\lib\GraphQL.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -91,12 +95,6 @@
     <Compile Include="Types\Relay\EdgeTypeTests.cs" />
     <Compile Include="Types\Relay\ConnectionTypeTests.cs" />
     <Compile Include="Types\SchemaTests.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GraphQL\GraphQL.csproj">
-      <Project>{c0e08b04-8a0d-4196-967c-8850825041b0}</Project>
-      <Name>GraphQL</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

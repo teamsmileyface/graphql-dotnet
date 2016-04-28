@@ -48,6 +48,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Antlr4.Runtime.4.5-alpha002\lib\net45\Antlr4.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="GraphQL, Version=0.6.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\GraphQL.0.6.5.0\lib\GraphQL.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -200,10 +204,6 @@
     <ProjectReference Include="..\GraphQL.Tests\GraphQL.Tests.csproj">
       <Project>{084e1e35-14bd-414b-97b6-1a6469cd1893}</Project>
       <Name>GraphQL.Tests</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GraphQL\GraphQL.csproj">
-      <Project>{c0e08b04-8a0d-4196-967c-8850825041b0}</Project>
-      <Name>GraphQL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
