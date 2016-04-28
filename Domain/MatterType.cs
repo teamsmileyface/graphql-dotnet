@@ -1,6 +1,6 @@
 using GraphQL.Types;
 
-namespace GraphQL.Tests
+namespace Domain
 {
     public class MatterType : ObjectGraphType
     {
@@ -11,10 +11,10 @@ namespace GraphQL.Tests
 
             Field<NonNullGraphType<StringGraphType>>("reference", "The reference of the matter.");
             Field<StringGraphType>("description", "The description of the matter.");
-            //Field<ListGraphType<CharacterInterface>>(
-            //    "friends",
-            //    resolve: context => data.GetFriends(context.Source as StarWarsCharacter)
-            //);
+            Field<ListGraphType<RoleType>>(
+                "roles",
+                resolve: context => data.GetRoles(context.Source as Matter)
+            );
             //Field<ListGraphType<EpisodeEnum>>("appearsIn", "Which movie they appear in.");
             //Field<StringGraphType>("primaryFunction", "The primary function of the droid.");
 

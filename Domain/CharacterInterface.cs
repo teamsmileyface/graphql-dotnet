@@ -1,6 +1,6 @@
 using GraphQL.Types;
 
-namespace GraphQL.Tests
+namespace Domain
 {
     public class CharacterInterface : InterfaceGraphType
     {

@@ -1,6 +1,6 @@
 ﻿using GraphQL.Types;
 
-namespace GraphQL.Tests
+namespace Domain
 {
     public class EpisodeEnum : EnumerationGraphType
     {
@@ -14,3 +14,4 @@ namespace GraphQL.Tests
         }
     }
 }
+

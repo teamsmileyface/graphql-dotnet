@@ -1,6 +1,6 @@
 using GraphQL.Types;
 
-namespace GraphQL.Tests
+namespace Domain
 {
     public class StarWarsQuery : ObjectGraphType
     {
@@ -38,7 +38,7 @@ namespace GraphQL.Tests
                 resolve: context => data.GetMatterByReferenceAsync((string)context.Arguments["reference"])
             );
 
-            Field<ClientType>(
+            Field<ContactType>(
                 "client",
                 arguments: new QueryArguments(
                     new[]

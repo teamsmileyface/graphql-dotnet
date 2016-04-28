@@ -1,6 +1,6 @@
-namespace GraphQL.Tests
+namespace Domain
 {
-    public class Client
+    public class Contact
     {
         public string Reference { get; set; }
         public string Forename { get; set; }

@@ -1,7 +1,7 @@
-﻿using GraphQL.Tests;
-using GraphQL.Types;
+﻿using GraphQL.Types;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Domain;
 
 namespace GraphQL.GraphiQL.Controllers
 {
@@ -21,7 +21,7 @@ namespace GraphQL.GraphiQL.Controllers
             _container.Register<HumanType>();
             _container.Register<DroidType>();
             _container.Register<MatterType>();
-            _container.Register<ClientType>();
+            _container.Register<ContactType>();
             _container.Register<CharacterInterface>();
             _container.Singleton(() => new StarWarsSchema(type => (GraphType) _container.Get(type)));
 
@@ -42,11 +42,5 @@ namespace GraphQL.GraphiQL.Controllers
         {
             return await _executer.ExecuteAsync(schema, rootObject, query, operationName);
         }
-    }
-
-    public class GraphQLQuery
-    {
-        public string Query { get; set; }
-        public string Variables { get; set; }
     }
 }

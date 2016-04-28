@@ -2,19 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GraphQL.Tests
+namespace GraphQL.GraphiQL
 {
-    public interface ISimpleContainer
-    {
-        object Get(Type serviceType);
-        T Get<T>();
-        void Register<TService>();
-        void Register<TService>(Func<TService> instanceCreator);
-        void Register<TService, TImpl>() where TImpl : TService;
-        void Singleton<TService>(TService instance);
-        void Singleton<TService>(Func<TService> instanceCreator);
-    }
-
     public class SimpleContainer : ISimpleContainer
     {
         private readonly Dictionary<Type, Func<object>> _registrations = new Dictionary<Type, Func<object>>();
