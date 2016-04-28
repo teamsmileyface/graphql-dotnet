@@ -170,6 +170,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpleContainer.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -201,9 +202,9 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GraphQL.Tests\GraphQL.Tests.csproj">
-      <Project>{084e1e35-14bd-414b-97b6-1a6469cd1893}</Project>
-      <Name>GraphQL.Tests</Name>
+    <ProjectReference Include="..\..\Domain\Domain.csproj">
+      <Project>{2CBBE132-593E-4D24-B742-D06012F1DF69}</Project>
+      <Name>Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
