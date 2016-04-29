@@ -6,6 +6,5 @@ namespace Domain
     {
         public string Reference { get; set; }
         public string Description { get; set; }
-        public List<Role> Roles { get; set; }
     }
 }
