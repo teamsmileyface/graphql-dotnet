@@ -16,15 +16,7 @@ namespace Domain
             }
 
             return matter.Roles; 
-                        
-            //var roles = new List<Role>();
-            //var lookup = matter.Roles;
-            //if (lookup != null)
-            //{
-            //    //_roles.Where(h => lookup.Select(r=>r.Id).Contains(h.Id)).Apply(roles.Add);
-            //    matter.Roles.Apply(roles.Add);
-            //}
-            //return roles;
+                     
         }
 
         public Task<Matter> GetMatterByReferenceAsync(string reference)
@@ -38,11 +30,6 @@ namespace Domain
             var dataSource = new ClientDataSource();
             return Task.FromResult(dataSource.FindByReference(reference).SingleOrDefault());
         }
-
-        //public Task<Client> GetClientByGuidAsync(string contactId)
-        //{
-        //    return Task.FromResult(_clients.FirstOrDefault(h => h.Id == new Guid(contactId)));
-        //}
 
         public Task<Role> GetRoleByIdAsync(int id, Matter matter)
         {

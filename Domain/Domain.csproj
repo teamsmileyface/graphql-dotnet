@@ -68,6 +68,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Client.cs" />
+    <Compile Include="ClientDataSource.cs" />
     <Compile Include="ClientType.cs" />
     <Compile Include="Contact.cs" />
     <Compile Include="ContactType.cs" />

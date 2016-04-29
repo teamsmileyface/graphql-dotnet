@@ -24,58 +24,24 @@ namespace Domain
         }
     }
 
-    public class ClientDataSource
+
+    public class MatterTest
     {
-        public List<Client> FindByReference(string reference)
+        [Fact(Skip = "database test")]
+        public void TestMatterWorks()
         {
-            using (var connection = new SqlConnection())
-            {
-                connection.ConnectionString =
-                    "Data Source=(local);Database=IrisLawBusiness;User Id=sa;Password=20Mountain08";
-                connection.Open();
+            var dataSource = new MatterDataSource();
 
-                /*
-                SELECT TOP 1000 [Id]
-      ,[PersonSurname]
-      ,[PersonTitle]
-      ,[PersonName]
-      ,[orgName]
-      ,[IsPerson]
-      ,[IsClient]
-      ,[Reference]
-  FROM [IrisLawBusiness].[dbo].[uvw_ContactSummary]
-  */
-
-                var clients = connection.Query<Client>(@"SELECT Id, Reference, 
-                                                       CASE WHEN IsPerson =1 THEN PersonTitle + ' ' + PersonName +' ' + PersonSurname 
-                                                       ELSE orgName
-                                                       END AS Name
-                                                       FROM uvw_ContactSummary WHERE Reference = @Ref",
-                    new { Ref = reference });
-
-                return clients.ToList();
-            }
+            var matters = dataSource.FindByReference("M000010001");
+            Assert.Equal(1, matters.Count);
+            Assert.Equal("Matter for Multicheck", matters.Single().Description);
         }
     }
 
 
-    //public class MatterTest
-    //{
-    //    [Fact]
-    //    public void TestMatterWorks()
-    //    {
-    //        var dataSource = new MatterDataSource();
-
-    //        var matters = dataSource.FindByReference("M000010001");
-    //        Assert.Equal(1, matters.Count);
-    //        Assert.Equal("Matter for Multicheck", matters.Single().Description);
-    //    }
-    //}
-
-
     public class ClientTest
     {
-        [Fact]
+        [Fact(Skip = "database test")]
         public void TestClientWorks()
         {
             var dataSource = new ClientDataSource();
