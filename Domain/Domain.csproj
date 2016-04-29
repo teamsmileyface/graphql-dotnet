@@ -30,8 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.40.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.42\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="GraphQL, Version=0.6.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\GraphQL.0.6.5.0\lib\GraphQL.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Solicitors.Configuration, Version=1.0.0.15, Culture=neutral, PublicKeyToken=212971fc5fe40896, processorArchitecture=MSIL">
+      <HintPath>..\packages\Solicitors.Configuration.1.0.0.15\lib\net45\Solicitors.Configuration.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -42,25 +50,36 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="xunit.assert, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.assert.2.1.0\lib\dotnet\xunit.assert.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="xunit.core, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.extensibility.core.2.1.0\lib\dotnet\xunit.core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="xunit.execution.desktop, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.extensibility.execution.2.1.0\lib\net45\xunit.execution.desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CharacterInterface.cs" />
+    <Compile Include="ClientType.cs" />
     <Compile Include="Contact.cs" />
     <Compile Include="ContactType.cs" />
-    <Compile Include="Droid.cs" />
-    <Compile Include="DroidType.cs" />
-    <Compile Include="EpisodeEnum.cs" />
-    <Compile Include="Human.cs" />
-    <Compile Include="HumanType.cs" />
     <Compile Include="Matter.cs" />
+    <Compile Include="MatterDataSource.cs" />
     <Compile Include="MatterType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="RoleType.cs" />
-    <Compile Include="StarWarsCharacter.cs" />
-    <Compile Include="StarWarsData.cs" />
-    <Compile Include="StarWarsQuery.cs" />
-    <Compile Include="StarWarsSchema.cs" />
+    <Compile Include="ALBData.cs" />
+    <Compile Include="ALBQuery.cs" />
+    <Compile Include="ALBSchema.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

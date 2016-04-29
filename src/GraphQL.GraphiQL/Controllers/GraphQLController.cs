@@ -16,16 +16,13 @@ namespace GraphQL.GraphiQL.Controllers
             _executer = new DocumentExecuter();
 
             _container = new SimpleContainer();
-            _container.Singleton(new StarWarsData());
-            _container.Register<StarWarsQuery>();
-            _container.Register<HumanType>();
-            _container.Register<DroidType>();
+            _container.Singleton(new ALBData());
+            _container.Register<ALBQuery>();
             _container.Register<MatterType>();
             _container.Register<ContactType>();
-            _container.Register<CharacterInterface>();
-            _container.Singleton(() => new StarWarsSchema(type => (GraphType) _container.Get(type)));
+            _container.Singleton(() => new ALBSchema(type => (GraphType) _container.Get(type)));
 
-            _schema = _container.Get<StarWarsSchema>();
+            _schema = _container.Get<ALBSchema>();
         }
 
         public async Task<ExecutionResult> Post(GraphQLQuery query)

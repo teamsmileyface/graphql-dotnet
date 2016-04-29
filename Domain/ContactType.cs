@@ -9,8 +9,8 @@ namespace Domain
             Name = "Contact";
             Description = "A contact - person or organisation";
 
-            Field<NonNullGraphType<StringGraphType>>("reference", "The reference of the client.");
-            Field<StringGraphType>("forename", "The forename of the client.");
+            Field<NonNullGraphType<StringGraphType>>("reference", "The reference of the contact.");
+            Field<StringGraphType>("name", "The name of a contact.");
 
             IsTypeOf = value => value is Contact;
         }
