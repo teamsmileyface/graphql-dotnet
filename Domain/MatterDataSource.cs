@@ -46,15 +46,16 @@ namespace Domain
                                 string.Format("{0}:{1}", "barry", "Passw0rd1"))));
 
                 var response =
-                    client.GetAsync("fields/matter/4F2D950A-95A6-4431-BDF1-6DC4B3995DAD?fqns=Matter.Description").Result;
+                    client.GetAsync("fields/matter/4F2D950A-95A6-4431-BDF1-6DC4B3995DAD?fqns=Matter.Description,Matter.Reference").Result;
 
                 var jsonMatter = response.Content.ReadAsStringAsync().Result;
 
-                var description = Newtonsoft.Json.JsonConvert.DeserializeObject<ReadFqnResult>(jsonMatter);
-
+                var fields = Newtonsoft.Json.JsonConvert.DeserializeObject<ReadFqnResult>(jsonMatter);
+                                
                 return new Matter()
                 {
-                    Description = (string) description.Values.First().Value
+                    Description = (string) fields.Values.First(f => f.Key== "Matter.Description").Value,
+                    Reference= (string)fields.Values.First(f => f.Key == "Matter.Reference").Value
                 };
             }
         }        
@@ -91,6 +92,7 @@ namespace Domain
             var matter = dataSource.FindByFqn();
             /*Assert.Equal(1, matters.Count); */
             Assert.Equal("Matter for Multicheck", matter.Description);
+            Assert.Equal("M000010001", matter.Reference);
         }
     }
 
