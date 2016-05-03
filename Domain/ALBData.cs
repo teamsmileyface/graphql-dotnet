@@ -17,5 +17,11 @@ namespace Domain
             var dataSource = new ClientDataSource();
             return Task.FromResult(dataSource.FindByReference(reference).SingleOrDefault());
         }
+
+        public Task<Debt> GetDebtForMatter(Matter source)
+        {
+            var dataSource = new DebtDataSource();
+            return Task.FromResult(dataSource.FindDebtByMatterId(source.Id));
+        }
     }
 }

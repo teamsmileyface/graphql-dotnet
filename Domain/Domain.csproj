@@ -38,6 +38,10 @@
       <HintPath>..\packages\GraphQL.0.6.5.0\lib\GraphQL.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Solicitors.Configuration, Version=1.0.0.15, Culture=neutral, PublicKeyToken=212971fc5fe40896, processorArchitecture=MSIL">
       <HintPath>..\packages\Solicitors.Configuration.1.0.0.15\lib\net45\Solicitors.Configuration.dll</HintPath>
       <Private>True</Private>
@@ -73,6 +77,9 @@
     <Compile Include="ClientType.cs" />
     <Compile Include="Contact.cs" />
     <Compile Include="ContactType.cs" />
+    <Compile Include="Debt.cs" />
+    <Compile Include="DebtDataSource.cs" />
+    <Compile Include="DebtType.cs" />
     <Compile Include="Matter.cs" />
     <Compile Include="MatterDataSource.cs" />
     <Compile Include="MatterType.cs" />
