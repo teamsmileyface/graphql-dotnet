@@ -1,10 +1,12 @@
 ﻿using GraphQL.Types;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Domain;
 
 namespace GraphQL.GraphiQL.Controllers
 {
+    [EnableCors(origins:"http://localhost,http://localhost:82", headers:"*",methods:"*", SupportsCredentials = true)]
     public class GraphQLController : ApiController
     {
         private readonly ISimpleContainer _container;

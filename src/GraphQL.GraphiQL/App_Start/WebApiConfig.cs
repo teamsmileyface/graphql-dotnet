@@ -9,6 +9,8 @@ namespace GraphQL.GraphiQL
     {
         public static void Register(HttpConfiguration config)
         {
+            config.EnableCors();
+
             config.Formatters.Clear();
 
             var settings = new JsonSerializerSettings();
