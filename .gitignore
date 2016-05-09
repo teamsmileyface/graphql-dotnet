@@ -5,7 +5,6 @@
 *.suo
 *.nupkg
 npm-debug.log
-bundle.js
 fixie-results.xml
 
 TestResults/
