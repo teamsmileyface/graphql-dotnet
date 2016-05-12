@@ -73,9 +73,11 @@ namespace Domain.DataAccess
 
                 connection.Open();
 
-                var matters = connection.Query<Matter>(@"SELECT m.ProjectId as Id, m.matRef as Reference, m.matDescription as Description  FROM Matter m INNER JOIN dbo.ProjectAssociations pa ON m.ProjectId = pa.ProjectID
-                                WHERE pa.OrgID = @OrgID",
-                    new { OrgID = id });
+                var matters = connection.Query<Matter>(@"
+                    SELECT m.ProjectId as Id, m.matRef as Reference, m.matDescription as Description 
+                        FROM Matter m INNER JOIN dbo.ProjectAssociations pa ON m.ProjectId = pa.ProjectID
+                            WHERE (pa.OrgID = @MemOrgID OR pa.MemberID = @MemOrgID) AND pa.AssociationRoleID = 1",
+                    new { MemOrgID = id });
 
                 return matters.ToList();
             }
