@@ -2,23 +2,28 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Threading.Tasks;
 using Dapper;
+using Domain.DTO;
 using Xunit;
 
-namespace Domain
+namespace Domain.DataAccess
 {
     public class MatterDataSource
     {
+        private readonly string _connectionString;
+
+        public MatterDataSource(string connectionString)
+        {
+            this._connectionString = connectionString;
+        }
+
         public List<Matter> FindByReference(string reference)
         {
             using (var connection = new SqlConnection())
             {
-                connection.ConnectionString =
-                    "Data Source=(local);Database=IrisLawBusiness;User Id=sa;Password=20Mountain08";
+                connection.ConnectionString = _connectionString;
                 connection.Open();
 
                 var matters = connection.Query<Matter>("SELECT ProjectId AS Id, matRef AS Reference, matDescription AS Description FROM Matter WHERE matRef = @Ref",
@@ -58,7 +63,23 @@ namespace Domain
                     Reference= (string)fields.Values.First(f => f.Key == "Matter.Reference").Value
                 };
             }
-        }        
+        }
+
+        public List<Matter> FindMattersByClientId(Guid id)
+        {
+            using (var connection = new SqlConnection())
+            {
+                connection.ConnectionString = _connectionString;
+
+                connection.Open();
+
+                var matters = connection.Query<Matter>(@"SELECT m.ProjectId as Id, m.matRef as Reference, m.matDescription as Description  FROM Matter m INNER JOIN dbo.ProjectAssociations pa ON m.ProjectId = pa.ProjectID
+                                WHERE pa.OrgID = @OrgID",
+                    new { OrgID = id });
+
+                return matters.ToList();
+            }
+        }
     }
 
     public class ReadFqnResult
@@ -74,10 +95,17 @@ namespace Domain
 
     public class MatterTest
     {
+        private readonly string _connectionString;
+
+        public MatterTest()
+        {
+            _connectionString = "Data Source=(local);Database=IrisLawBusiness;User Id=sa;Password=20Mountain08";
+        }
+
         [Fact(Skip = "database test")]
         public void TestMatterWorks()
         {
-            var dataSource = new MatterDataSource();
+            var dataSource = new MatterDataSource(_connectionString);
 
             var matters = dataSource.FindByReference("M000010001");
             Assert.Equal(1, matters.Count);
@@ -87,11 +115,11 @@ namespace Domain
         [Fact]
         public void TestFieldsApiWorks()
         {
-            var dataSource = new MatterDataSource();
+            var dataSource = new MatterDataSource(_connectionString);
 
             var matter = dataSource.FindByFqn();
             /*Assert.Equal(1, matters.Count); */
-            Assert.Equal("Matter for Multicheck", matter.Description);
+                Assert.Equal("Matter for Multicheck", matter.Description);
             Assert.Equal("M000010001", matter.Reference);
         }
     }
@@ -99,10 +127,17 @@ namespace Domain
 
     public class ClientTest
     {
+        private readonly string _connectionString;
+
+        public ClientTest()
+        {
+            _connectionString = "Data Source=(local);Database=IrisLawBusiness;User Id=sa;Password=20Mountain08";
+        }
+
         [Fact(Skip = "database test")]
         public void TestClientWorks()
         {
-            var dataSource = new ClientDataSource();
+            var dataSource = new ClientDataSource(_connectionString);
 
             var clients = dataSource.FindByReference("M00001");
             Assert.Equal(1, clients.Count);

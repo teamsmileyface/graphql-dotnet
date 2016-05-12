@@ -1,6 +1,7 @@
+using Domain.DTO;
 using GraphQL.Types;
 
-namespace Domain
+namespace Domain.GraphQLDTO
 {
     public class MatterType : ObjectGraphType
     {

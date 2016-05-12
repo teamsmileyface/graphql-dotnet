@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Domain;
+using Domain.GraphQLDTO;
 
 namespace GraphQL.GraphiQL.Controllers
 {
@@ -15,10 +16,12 @@ namespace GraphQL.GraphiQL.Controllers
 
         public GraphQLController()
         {
+            var connectionString = "Data Source=(local);Database=IrisLawBusiness_smiths;User Id=sa;Password=20Mountain08";
+
             _executer = new DocumentExecuter();
 
             _container = new SimpleContainer();
-            _container.Singleton(new ALBData());
+            _container.Singleton(new ALBData(connectionString));
             _container.Register<ALBQuery>();
             _container.Register<MatterType>();
             _container.Register<ContactType>();

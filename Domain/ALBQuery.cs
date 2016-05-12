@@ -1,4 +1,7 @@
+using System;
 using System.Threading.Tasks;
+using Domain.DTO;
+using Domain.GraphQLDTO;
 using GraphQL.Types;
 
 namespace Domain
@@ -29,16 +32,19 @@ namespace Domain
                     new[]
                     {
                         new QueryArgument<StringGraphType> {Name = "reference", Description = "reference of the client"},
-                        new QueryArgument<StringGraphType> {Name = "contactId", Description = "guid of the client"}
+                        new QueryArgument<StringGraphType> {Name = "id", Description = "guid of the client"}
                     }),
                 resolve: context => GetClientAsync(data, context)
                 );
-        }
+
+
+
+ }
 
         private static Task<Client> GetClientAsync(ALBData data, ResolveFieldContext context)
         {
-            if (context.Arguments["reference"] != null)
-                return data.GetClientByReferenceAsync((string) context.Arguments["reference"]);
+            if (context.Arguments["id"] != null)
+                return data.GetClientByReferenceAsync((string) context.Arguments["id"]);
             
             return null;
         }

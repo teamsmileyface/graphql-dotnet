@@ -1,7 +1,6 @@
 using System;
-using System.Collections.Generic;
 
-namespace Domain
+namespace Domain.DTO
 {
     public class Matter
     {

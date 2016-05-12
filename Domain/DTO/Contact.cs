@@ -1,6 +1,6 @@
 using System;
 
-namespace Domain
+namespace Domain.DTO
 {
     public class Contact
     {
