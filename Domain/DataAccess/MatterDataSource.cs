@@ -65,7 +65,7 @@ namespace Domain.DataAccess
             }
         }
 
-        public List<Matter> FindMattersByClientId(Guid id)
+        public List<Matter> FindMatters(Guid clientId, string matterReference)
         {
             using (var connection = new SqlConnection())
             {
@@ -76,8 +76,9 @@ namespace Domain.DataAccess
                 var matters = connection.Query<Matter>(@"
                     SELECT m.ProjectId as Id, m.matRef as Reference, m.matDescription as Description 
                         FROM Matter m INNER JOIN dbo.ProjectAssociations pa ON m.ProjectId = pa.ProjectID
-                            WHERE (pa.OrgID = @MemOrgID OR pa.MemberID = @MemOrgID) AND pa.AssociationRoleID = 1",
-                    new { MemOrgID = id });
+                            WHERE (pa.OrgID = @MemOrgID OR pa.MemberID = @MemOrgID) AND pa.AssociationRoleID = 1 
+                            and matRef like @MatRef ",
+                    new { MemOrgID = clientId, MatRef = $"%{matterReference}%" });
 
                 return matters.ToList();
             }

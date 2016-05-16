@@ -34,10 +34,10 @@ namespace Domain
             return Task.FromResult(dataSource.FindDebtByMatterId(source.Id));
         }
 
-        public Task<List<Matter>> GetMattersForClient(Client client)
+        public Task<List<Matter>> GetMattersForClient(Client client, string matterReference)
         {
             var dataSource = new MatterDataSource(_connectionString);
-            return Task.FromResult(dataSource.FindMattersByClientId(client.Id));
+            return Task.FromResult(dataSource.FindMatters(client.Id, matterReference));
         }
 
         // public delegate Task<TResult> Query<TParam, TResult>(TParam query);
